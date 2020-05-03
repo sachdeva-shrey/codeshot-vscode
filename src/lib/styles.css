@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.CodeMirror {
+  padding: 10px;
+  border-radius: 5px;
+  height: auto !important;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 1.2em;
+  padding-left: 30px;
+  /* font-family: 'Ubuntu Mono', monospace !important; */
+  /* font-family: "IBM Plex Mono", monospace; */
+  position: fixed;
+  pointer-events: none;
+}
+
+.container {
+  position: fixed;
+  overflow: hidden !important;
+}
+
+.react-codemirror2 {
+  overflow: hidden !important;
+}
+
+
+
