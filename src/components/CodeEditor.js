@@ -1,16 +1,16 @@
 import * as React from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 
-import '../lib/styles.css'
+import "../lib/styles.css";
 
-require("codemirror/mode/xml/xml");
-require("codemirror/mode/javascript/javascript");
-require("codemirror/mode/css/css");
-require("codemirror/mode/jsx/jsx");
-require("codemirror/lib/codemirror.css");
-require("codemirror/theme/dracula.css");
-require("codemirror/theme/panda-syntax.css");
-require("codemirror/theme/material.css");
+import "codemirror/mode/xml/xml";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/css/css";
+import "codemirror/mode/jsx/jsx";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/dracula.css";
+import "codemirror/theme/panda-syntax.css";
+import "codemirror/theme/material.css";
 
 export class StyledEditor extends React.Component {
   constructor(props) {
