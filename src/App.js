@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import QueryParamsDemo from './components/GetParams'
+import QueryParams from './components/GetParams'
 
 function App() {
   return (
     <div className="App">
-      <QueryParamsDemo />
+      <QueryParams />
     </div>
   );
 }

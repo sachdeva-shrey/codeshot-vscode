@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 
 import "../lib/styles.css";
@@ -12,65 +12,44 @@ import "codemirror/theme/dracula.css";
 import "codemirror/theme/panda-syntax.css";
 import "codemirror/theme/material.css";
 
-export class StyledEditor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      snippet: this.props.snippet,
-      theme: this.props.theme,
-      language: this.props.lang,
-    };
-    this.onChange = this.onChange.bind(this);
-  }
+export const StyledEditor = (props) => {
+  const [snippet, setSnippet] = useState(props.snippet);
+  const [lang, setLang] = useState(props.lang);
+  const [editorTheme, setEditorTheme] = useState(props.theme);
 
-  onChange = (editor, data, value) => {
-    this.setState({ snippet: value });
+  const onChange = (editor, data, value) => {
+    setSnippet(value);
   };
 
-  render() {
-    const OPTIONS = {
-      theme: `${this.state.theme}`,
-      autoCloseBrackets: true,
-      cursorScrollMargin: 48,
-      mode: `${this.state.language}`,
-      lineNumbers: false,
-      indentUnit: 2,
-      tabSize: 2,
-      styleActiveLine: true,
-      viewportMargin: 99,
-    };
-
-    return (
-      <React.Fragment>
-        <PureEditor
-          name="js"
-          value={this.state.snippet}
-          options={OPTIONS}
-          onChange={this.onChange}
-        />
-        <Style css={this.state.snippet} />
-      </React.Fragment>
-    );
-  }
-}
-
-class PureEditor extends React.PureComponent {
-  render() {
-    return (
+  const OPTIONS = {
+    theme: `${editorTheme}`,
+    autoCloseBrackets: true,
+    cursorScrollMargin: 48,
+    mode: `${lang}`,
+    lineNumbers: false,
+    indentUnit: 2,
+    tabSize: 2,
+    styleActiveLine: true,
+    viewportMargin: 99,
+  };
+  return (
+    <>
       <CodeMirror
-        value={this.props.value}
-        options={this.props.options}
-        onBeforeChange={this.props.onChange}
+        className="editor"
+        value={snippet}
+        options={OPTIONS}
+        onBeforeChange={onChange}
       />
-    );
-  }
-}
+      <Style snippet={snippet} />
+    </>
+  );
+};
 
 export const Style = (props) => {
   return (
     <style
       dangerouslySetInnerHTML={{
-        __html: props.css,
+        __html: props.snippet,
       }}
     />
   );
